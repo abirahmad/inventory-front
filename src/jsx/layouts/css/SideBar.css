@@ -1,0 +1,93 @@
+.sidebar {
+    position: fixed;
+    /* Or desired positioning */
+    width: 250px;
+    /* Adjust width as needed */
+    height: 100vh;
+    background-color: #28a745;
+    /* Green color */
+    color: white;
+    /* White text */
+    transition: all 0.3s ease-in-out;
+    /* Add smooth transition */
+}
+
+.sidebar.open {
+    width: 200px;
+    /* Adjust width for collapsed state */
+}
+
+.sidebar {
+    /* ... other styles from previous example ... */
+    padding: 1rem;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link.collapsed {
+    /* Add styling for collapsed state (optional) */
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Subtle hover effect */
+}
+
+.nav-submenu {
+    margin-left: 1rem;
+    /* Indent the submenu */
+    padding-top: 0.5rem;
+    background-color: #62c669;
+    /* Add a subtle background */
+    border-radius: 5px;
+    /* Rounded corners for a softer look */
+    border: 1px solid #ddd;
+
+}
+
+.submenu-link {
+    padding: 0.5rem 1rem;
+    color: inherit;
+    transition: all 0.2s ease-in-out;
+}
+
+.submenu-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Subtle hover effect */
+}
+
+.nav-link.collapsed::after {
+    content: '\25be'; /* Show a caret icon for expanded state */
+  }
+  
+  .nav-link.collapsed::after {
+    content: '\25b4'; /* Show a down arrow for collapsed state */
+  }
