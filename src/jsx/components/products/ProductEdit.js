@@ -25,17 +25,22 @@ const ProductEdit = (props) => {
         setFormValues(productDeatils);
     }, [productDeatils]);
 
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+    
+        setFormValues((prev) => {
+          return { ...prev, [name]: value };
+        });
+      };
+
 
     const {
         errors,
         handleSubmit,
-        values,
-        handleChange,
-        resetForm
     } = useFormik({
         initialValues: formValues,
 
-        validationSchema: validates,
+        // validationSchema: validates,
         handleChange: () => { },
         onSubmit: () => {
             let cp = { ...formValues };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/SideBar.css'; // Import your custom CSS file
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import LogoutPage from '../../components/auth/LogoutPage';
 
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(false); // State to track menu visibility
@@ -46,12 +47,13 @@ export default function SideBar() {
           </button>
           <div id="account-collapse" className="collapse">
             <ul className="nav-submenu">
-              <li><a href="#" className="submenu-link">New...</a></li>
+            <li><Link className={`${path === "logout" ? "mm-active" : ""}`} to="/logout"> Logout</Link></li>
               <li><a href="#" className="submenu-link">Profile</a></li>
               <li><a href="#" className="submenu-link">Settings</a></li>
               <li><a href="#" className="submenu-link">Sign out</a></li>
             </ul>
           </div>
+          <LogoutPage />
         </li>
       </ul>
     </div>

@@ -26,13 +26,11 @@ export function saveTokenInLocalStorage(tokenDetails) {
     // tokenDetails.expireDate = new Date(
     //     new Date().getTime() + tokenDetails.expires_at * 1000,
     // );
-    console.log('tokenDetails', tokenDetails)
     localStorage.setItem('userDetails', JSON.stringify(tokenDetails));
     localStorage.setItem('access_token', JSON.stringify(tokenDetails.access_token));
 }
 
 export function login(username, password) {
-    console.log('username', username,'password',password)
     let postData = {
         username: username,
         password: password,

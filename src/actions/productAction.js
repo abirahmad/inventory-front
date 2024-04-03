@@ -108,12 +108,14 @@ export const productEditAction = (values,id) => async (dispatch) => {
     try {
         await Axios.put(`product/${id}`, postData, {})
             .then((response) => {
-                console.log('response', response.status)
-                return
+                console.log('response', response)
                 response.data = response.data.data;
+                console.log('response', response)
+                toast.success('Product Successfully updated');
                 if (response.status == 200) {
-                    toast.success('Product Successfully created');
-                    window.location.assign('/');
+                    console.log('response', response)
+                    
+                    window.location.assign('/product-list');
                 }
 
             })

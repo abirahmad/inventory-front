@@ -6,6 +6,7 @@ export const POST_LOGIN_DATA ="POST_LOGIN_DATA";
 //Authentication
 export const LOGOUT_ACTION ="LOGOUT_ACTION";
 export const LOGIN_CONFIRMED_ACTION ="LOGIN_CONFIRMED_ACTION";
+export const LOGIN_FAILED_ACTION ="LOGIN_FAILED_ACTION";
 
 
 //Product Add

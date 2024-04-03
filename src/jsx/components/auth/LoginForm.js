@@ -3,12 +3,13 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { setUsername, setPassword } from '../../../actions/userAction';
 import { ToastContainer, toast } from 'react-toastify';
 import { loginAction } from '../../../actions/authActions';
+import { Spinner } from 'react-bootstrap';
 
 const LoginForm = (props) => {
 
   const dispatch = useDispatch();
-  const { username, password } = useSelector((state) => state.user);
-
+  const { username, password,showLoading } = useSelector((state) => state.auth);
+ console.log('showLoading', showLoading)
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -22,15 +23,7 @@ const LoginForm = (props) => {
       toast.error('Please enter your password!');
       return;
     }
-  // let values={
-  //   username:username,
-  //   password:password,
-  //   history:props.history,
-  // }
-    // Simulate login (replace with actual login logic)
-    dispatch(loginAction(username,password,props.history)); // Dispatch login success action
-    dispatch(setUsername(username)); // Dispatch action to update username
-    dispatch(setPassword(password));
+    dispatch(loginAction(username, password, props.history));
   };
 
   return (
@@ -60,11 +53,22 @@ const LoginForm = (props) => {
                 onChange={(e) => dispatch(setPassword(e.target.value))}
               />
             </div>
-            <div className="d-grid gap-2">
+            {/* <div className="d-grid gap-2">
               <button type="submit" className="btn btn-primary">Login</button>
+            </div> */}
+            <div className="d-grid gap-2">
+              {showLoading == true ?
+                <button type="submit" className="btn btn-primary">
+                  Login
+                  <Spinner animation="border" size="sm" />
+                </button> :
+                <button type="submit" className="btn btn-primary">
+                  Login
+                </button>
+              }
+
             </div>
           </form>
-          <ToastContainer />
         </div>
       </div>
     </div>
@@ -74,9 +78,9 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-      errorMessage: state.auth.errorMessage,
-      successMessage: state.auth.successMessage,
-      showLoading: state.auth.showLoading,
+    errorMessage: state.auth.errorMessage,
+    successMessage: state.auth.successMessage,
+    showLoading: state.auth.showLoading,
   };
 };
 export default connect(mapStateToProps)(LoginForm);

@@ -7,8 +7,8 @@ const initialState = {
         description: '',
         image: '',
     },
-    productList:[],
-    productDeatils:{},
+    productList: [],
+    productDeatils: {},
     username: '',
     password: '',
     errorMessage: '',
@@ -19,6 +19,13 @@ const productReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case Types.PRODUCT_ADD_ACTION:
+            return {
+                ...state,
+                productForm: action.payload.data,
+                isLoading: action.payload.isLoading,
+            };
+
+        case Types.PRODUCT_EDIT_ACTION:
             return {
                 ...state,
                 productForm: action.payload.data,

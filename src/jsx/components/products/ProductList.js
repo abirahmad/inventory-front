@@ -8,7 +8,6 @@ const ProductList = () => {
 
     const dispatch = useDispatch();
     const { productList, isLoading } = useSelector((state) => state.product);
-console.log('productList', productList)
     useEffect(() => {
         dispatch(productListAction())
     }, []);

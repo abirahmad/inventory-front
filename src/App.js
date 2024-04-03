@@ -7,6 +7,8 @@ import { checkAutoLogin } from './services/authService';
 import { isAuthenticated } from './actions/authActions';
 import Index from './jsx';
 import axiosDefault from './utils/axios-default';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import './Sidebar.css'; // Import your custom sidebar CSS
 const Registration = lazy(() => import('./jsx/components/auth/Registration'));
 const Login = lazy(() => {
@@ -43,6 +45,7 @@ function App(props) {
     return (
         <Suspense fallback={<Preloader />}>
           {props.isAuthenticated ? <Index /> : routes}
+          <ToastContainer autoClose={2000}  />
         </Suspense>
       );
 
